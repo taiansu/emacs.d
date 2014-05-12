@@ -1,0 +1,10 @@
+backup
+/url/cookies
+/secrets.el
+/tramp
+/elpa
+
+.#*
+*~
+/el-get/el-get
+/el-get
