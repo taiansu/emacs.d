@@ -1,9 +1,14 @@
 (package-initialize)
+(require 'cask "/usr/local/Cellar/cask/0.6.0/cask.el")
+(cask-initialize)
+(require 'pallet)
 (require 'powerline)
 (powerline-default-theme)
 (require 'grep-a-lot)
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
+
+(setq cask-base-path "~/.emacs.d/.cask/24.4.50.1/elpa/")
 
 ;; ==============================
 
@@ -16,17 +21,13 @@
  '(custom-enabled-themes (quote (base16-tomorrow)))
  '(custom-safe-themes
    (quote
-    ("e53cc4144192bb4e4ed10a3fa3e7442cae4c3d231df8822f6c02f1220a0d259a" default)))
- '(ido-enable-flex-matching t)
- '(ido-mode (quote both) nil (ido))
+    ("e01b71af3b95b40fd877edfd0211114c5e7496a35bf6813edc29490fbd07edb4" default)))
+ '(global-linum-mode t)
+ '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
- '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
-
 ;; ==============================
 
 (custom-set-faces
@@ -45,3 +46,47 @@
               backward-char forward-char))
     (ding)))
 (setq ring-bell-function 'important-bell-only)
+
+;; ido support
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+
+;; auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories
+   (format "%s%s" cask-base-path "auto-complete-20140512.43/dict"))
+(ac-config-default)
+(setq ac-ignore-case nil)
+(add-to-list 'ac-modes 'enh-ruby-mode)
+(add-to-list 'ac-modes 'web-mode)
+
+;; smartparens
+; (require 'smartparens-config)
+; (require 'smartparens-ruby)
+; (smartparens-global-mode)
+; (show-smartparens-global-mode t)
+; (sp-with-modes '(rhtml-mode)
+;  (sp-local-pair "<" ">")
+;  (sp-local-pair "<%" "%>"))
+
+;; projectile
+;;(require 'grizzl)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+;;(setq projectile-completion-system 'grizzl)
+;; Press Command-p for fuzzy find in project
+(global-set-key (kbd "s-p") 'projectile-find-file)
+;; Press Command-b for fuzzy switch buffer
+(global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
+
+;; highlight-indentation
+; (require 'highlight-indentation)
+; (add-hook 'enh-ruby-mode-hook
+;          (lambda () (highlight-indentation-current-column-mode)))
+
+; (add-hook 'coffee-mode-hook
+;          (lambda () (highlight-indentation-current-column-mode)))
