@@ -49,6 +49,8 @@
 (depends-on "web-mode")
 (depends-on "wrap-region")
 
+(depends-on "livescript-mode")
+
 (depends-on "base16-theme")
 (depends-on "zenburn-theme")
 (depends-on "soft-morning-theme")

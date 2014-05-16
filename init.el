@@ -8,10 +8,17 @@
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
 
+; don't open new frames when opening files in aquamacs
+(setq one-buffer-one-frame-mode nil)
+
+;; ====== exchange command and meta in emacs
+;; but switch input method still using command-space
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
 (setq cask-base-path "~/.emacs.d/.cask/24.4.50.1/elpa/")
 
 ;; ==============================
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,8 +35,8 @@
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
-;; ==============================
 
+;; ==============================
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,6 +53,81 @@
               backward-char forward-char))
     (ding)))
 (setq ring-bell-function 'important-bell-only)
+
+; GRB: keybindings
+(global-set-key (quote [?\e ?g]) (quote goto-line))
+(global-set-key '[?\e ?(] 'start-kbd-macro)
+(global-set-key '[?\e ?)] 'end-kbd-macro)
+(global-set-key [?\e ?n] 'call-last-kbd-macro)
+
+; GRB: resize and move the window if we're in a windowing system
+(defun resize-frame ()
+  "Resize current frame"
+  (interactive)
+  (set-frame-size (selected-frame) 239 68))
+(defun move-frame ()
+  "Move current frame"
+  (interactive)
+  (set-frame-position (selected-frame) 0 0))
+(if (not (eq window-system 'nil))
+    (progn
+     (move-frame)
+     (resize-frame)))
+
+; GRB: split the windows
+(progn
+  (interactive)
+  (split-window-horizontally (floor (* 0.55 (window-width))))
+  (other-window 1)
+  ;(split-window-horizontally 80)
+  ;(other-window 1)
+  (split-window)
+  (other-window 1)
+  (eshell)
+  (other-window -3))
+
+; GRB: use C-o and M-o to switch windows
+(global-set-key "\C-o" 'other-window)
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key "\M-o" 'prev-window)
+
+; GRB: highlight trailing whitespace
+(set-default 'show-trailing-whitespace t)
+
+; GRB: open temporary buffers in a dedicated window split
+(setq special-display-regexps
+        '("^\\*Completions\\*$"
+          "^\\*Help\\*$"
+          "^\\*grep\\*$"
+          "^\\*Apropos\\*$"
+          "^\\*elisp macroexpansion\\*$"
+          "^\\*local variables\\*$"
+          "^\\*Compile-Log\\*$"
+          "^\\*Quail Completions\\*$"
+          "^\\*Occur\\*$"
+          "^\\*frequencies\\*$"
+          "^\\*compilation\\*$"
+          "^\\*Locate\\*$"
+          "^\\*Colors\\*$"
+          "^\\*tumme-display-image\\*$"
+          "^\\*SLIME Description\\*$"
+          "^\\*.* output\\*$"           ; tex compilation buffer
+          "^\\*TeX Help\\*$"
+          "^\\*Shell Command Output\\*$"
+          "^\\*Async Shell Command\\*$"
+          "^\\*Backtrace\\*$"))
+(setq grb-temporary-window (nth 2 (window-list)))
+(defun grb-special-display (buffer &optional data)
+  (let ((window grb-temporary-window))
+    (with-selected-window window
+      (switch-to-buffer buffer)
+      window)))
+(setq special-display-function #'grb-special-display)
+
+; GRB: Don't show the startup screen
+(setq inhibit-startup-message t)
 
 ;; ido support
 (require 'flx-ido)
@@ -79,9 +161,9 @@
 (setq projectile-enable-caching t)
 ;;(setq projectile-completion-system 'grizzl)
 ;; Press Command-p for fuzzy find in project
-(global-set-key (kbd "s-p") 'projectile-find-file)
+(global-set-key (kbd "M-p") 'projectile-find-file)
 ;; Press Command-b for fuzzy switch buffer
-(global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
+(global-set-key (kbd "M-b") 'projectile-switch-to-buffer)
 
 ;; highlight-indentation
 ; (require 'highlight-indentation)
@@ -90,3 +172,13 @@
 
 ; (add-hook 'coffee-mode-hook
 ;          (lambda () (highlight-indentation-current-column-mode)))
+
+; ====== viper =========
+
+;(setq viper-mode nil)                ; enable Viper at load time
+;(setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
+;(require 'viper)                   ; load Viper
+;(require 'vimpulse)                ; load Vimpulse
+;(require 'redo)			   ; enable vim-style redo
+;(require 'rect-mark)		   ; enable prettier rectangular selections
+
