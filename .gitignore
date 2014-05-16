@@ -3,6 +3,7 @@ backup
 /secrets.el
 /tramp
 /elpa
+/.cask
 
 .#*
 *~
