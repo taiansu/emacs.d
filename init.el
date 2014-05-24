@@ -69,7 +69,7 @@
    "Resize current frame"
    (interactive)
    (set-frame-size (selected-frame) 239 68))
- (defun move-frame
+(defun move-frame ()
    "Move current frame"
    (interactive)
    (set-frame-position (selected-frame) 0 0))
