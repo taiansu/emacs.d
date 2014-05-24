@@ -2,8 +2,6 @@
 (require 'cask "/usr/local/Cellar/cask/0.7.0/cask.el")
 (cask-initialize)
 (require 'pallet)
-(require 'powerline)
-(powerline-default-theme)
 (require 'grep-a-lot)
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
@@ -25,6 +23,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
+
  '(custom-enabled-themes (quote (base16-tomorrow)))
  '(custom-safe-themes
    (quote
@@ -33,6 +32,11 @@
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(menu-bar-mode nil)
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 
@@ -61,25 +65,18 @@
 (global-set-key [?\e ?n] 'call-last-kbd-macro)
 
 ; GRB: resize and move the window if we're in a windowing system
-;(defun resize-frame ()
-  ; "Resize current frame"
-  ; (interactive)
-  ; (set-frame-size (selected-frame) 239 68))
-; (defun move-frame
-  ; "Move current frame"
-  ; (interactive)
-  ; (set-frame-position (selected-frame) 0 0))
-; (if (not (eq window-system 'nil))
-  ;   (progn
-  ;    (move-frame)
-  ;   (resize-frame)))
-(defun toggle-fullscreen ()
-  "Toggle full screen"
-  (interactive)
-  (set-frame-parameter
-   nil 'fullscreen
-   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
-; (set-frame-parameter nil 'fullscreen 'fullboth)
+(defun resize-frame ()
+   "Resize current frame"
+   (interactive)
+   (set-frame-size (selected-frame) 239 68))
+ (defun move-frame
+   "Move current frame"
+   (interactive)
+   (set-frame-position (selected-frame) 0 0))
+(if (not (eq window-system 'nil))
+    (progn
+     (move-frame)
+    (resize-frame)))
 
 (add-to-list 'default-frame-alist '(top 0))
 (add-to-list 'default-frame-alist '(left 0))
@@ -190,3 +187,11 @@
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+(defun seeing-is-believing ()
+  "Replace the current region (or the whole buffer, if none) with the output
+of seeing_is_believing."
+  (interactive)
+  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
+        (end (if (region-active-p) (region-end) (point-max))))
+    (shell-command-on-region beg end "seeing_is_believing" nil 'replace)))
