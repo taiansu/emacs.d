@@ -23,22 +23,42 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
-
  '(custom-enabled-themes (quote (base16-tomorrow)))
  '(custom-safe-themes
    (quote
-    ("e01b71af3b95b40fd877edfd0211114c5e7496a35bf6813edc29490fbd07edb4" default)))
+    ("5239c4088b5ecfb5c89cda7ccef5c6127740def8a41225e28ba5b69711d904ca" default)))
  '(line-spacing 3)
  '(magit-diff-use-overlays nil)
- '(menu-bar-mode nil)
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(menu-bar-mode nil)
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tool-bar-mode nil)
- '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#bf616a")
+     (40 . "#DCA432")
+     (60 . "#ebcb8b")
+     (80 . "#B4EB89")
+     (100 . "#89EBCA")
+     (120 . "#89AAEB")
+     (140 . "#C189EB")
+     (160 . "#bf616a")
+     (180 . "#DCA432")
+     (200 . "#ebcb8b")
+     (220 . "#B4EB89")
+     (240 . "#89EBCA")
+     (260 . "#89AAEB")
+     (280 . "#C189EB")
+     (300 . "#bf616a")
+     (320 . "#DCA432")
+     (340 . "#ebcb8b")
+     (360 . "#B4EB89"))))
+ '(vc-annotate-very-old-color nil))
 
 ;; ==============================
 (custom-set-faces
@@ -63,6 +83,11 @@
 (global-set-key '[?\e ?(] 'start-kbd-macro)
 (global-set-key '[?\e ?)] 'end-kbd-macro)
 (global-set-key [?\e ?n] 'call-last-kbd-macro)
+
+; alway hightligh cursor-line
+(global-hl-line-mode 1)
+(require 'hlinum)
+(hlinum-activate)
 
 ; GRB: resize and move the window if we're in a windowing system
 (defun resize-frame ()
@@ -153,6 +178,13 @@
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 
+;; cua-mode
+(cua-mode 1)
+
+;; paren matching
+(show-paren-mode 1) ; turn on paren match highlighting
+(setq show-paren-style 'expression) ; highlight entire bracket expression
+
 ;; smartparens
 ; (require 'smartparens-config)
 ; (require 'smartparens-ruby)
@@ -172,7 +204,7 @@
 ;; Press Command-b for fuzzy switch buffer
 (global-set-key (kbd "M-b") 'projectile-switch-to-buffer)
 
-;; highlight-indentation
+;; Highlight-indentation
 (require 'highlight-indentation)
 (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
 
