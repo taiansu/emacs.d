@@ -183,7 +183,7 @@
 
 ;; paren matching
 (show-paren-mode 1) ; turn on paren match highlighting
-(setq show-paren-style 'expression) ; highlight entire bracket expression
+(setq show-paren-style 'parenthesis) ; highlight entire bracket expression
 
 ;; smartparens
 ; (require 'smartparens-config)
