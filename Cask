@@ -15,6 +15,7 @@
 (depends-on "drag-stuff")
 (depends-on "ecb")
 (depends-on "enclose")
+(depends-on "evil-nerd-commenter")
 (depends-on "findr")
 (depends-on "floobits")
 (depends-on "flx-ido")
