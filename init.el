@@ -17,6 +17,9 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
+
 (setq cask-base-path "~/.emacs.d/.cask/24.4.50.1/elpa/")
 
 ;; ==============================
@@ -40,6 +43,8 @@
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
