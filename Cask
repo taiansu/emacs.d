@@ -57,3 +57,6 @@
 (depends-on "web-mode")
 (depends-on "wrap-region")
 
+;; syntax
+(depends-on "markdown-mode")
+
