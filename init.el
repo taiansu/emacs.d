@@ -6,6 +6,11 @@
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/spacegray")
+(normal-erase-is-backspace-mode 1)
+
+(load-theme 'spacegray t)
+
 ; don't open new frames when opening files in aquamacs
 (setq one-buffer-one-frame-mode nil)
 
@@ -28,23 +33,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(blink-cursor-mode nil)
- '(custom-enabled-themes (quote (base16-tomorrow)))
- '(custom-safe-themes
-   (quote
-    ("5239c4088b5ecfb5c89cda7ccef5c6127740def8a41225e28ba5b69711d904ca" default)))
+ '(fci-rule-color "#343d46")
  '(line-spacing 3)
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
- '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -96,35 +98,6 @@
 (global-hl-line-mode 1)
 (require 'hlinum)
 (hlinum-activate)
-
-; GRB: resize and move the window if we're in a windowing system
-(defun resize-frame ()
-   "Resize current frame"
-   (interactive)
-   (set-frame-size (selected-frame) 239 68))
-(defun move-frame ()
-   "Move current frame"
-   (interactive)
-   (set-frame-position (selected-frame) 0 0))
-(if (not (eq window-system 'nil))
-    (progn
-     (move-frame)
-    (resize-frame)))
-
-(add-to-list 'default-frame-alist '(top 0))
-(add-to-list 'default-frame-alist '(left 0))
-
-; GRB: split the windows
-; (progn
-  ; (interactive)
-  ; (split-window-horizontally (floor (* 0.55 (window-width))))
-  ; (other-window 1)
-  ; ;(split-window-horizontally 80)
-  ; ;(other-window 1)
-  ; (split-window)
-  ; (other-window 1)
-  ; (eshell)
-  ; (other-window -3))
 
 ; GRB: use C-o and M-o to switch windows
 (global-set-key "\C-o" 'other-window)
@@ -224,6 +197,11 @@
 ;(require 'vimpulse)                ; load Vimpulse
 ;(require 'redo)			   ; enable vim-style redo
 ;(require 'rect-mark)		   ; enable prettier rectangular selections
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat " %" (number-to-string w) "d ")))
+    ad-do-it))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -237,3 +215,36 @@ of seeing_is_believing."
     (shell-command-on-region beg end "seeing_is_believing" nil 'replace)))
 
 (evilnc-default-hotkeys)
+
+;; anzu
+(global-anzu-mode +1)
+
+; GRB: resize and move the window if we're in a windowing system
+(defun resize-frame ()
+   "Resize current frame"
+   (interactive)
+   (set-frame-size (selected-frame) 239 68))
+(defun move-frame ()
+   "Move current frame"
+   (interactive)
+   (set-frame-position (selected-frame) 0 0))
+(if (not (eq window-system 'nil))
+    (progn
+     (move-frame)
+    (resize-frame)))
+
+(add-to-list 'default-frame-alist '(top 0))
+(add-to-list 'default-frame-alist '(left 0))
+
+; GRB: split the windows
+; (progn
+  ; (interactive)
+  ; (split-window-horizontally (floor (* 0.55 (window-width))))
+  ; (other-window 1)
+  ; ;(split-window-horizontally 80)
+  ; ;(other-window 1)
+  ; (split-window)
+  ; (other-window 1)
+  ; (eshell)
+  ; (other-window -3))
+
