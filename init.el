@@ -10,6 +10,15 @@
 (normal-erase-is-backspace-mode 1)
 (evil-mode 1)
 
+;; Setting English Font
+(set-face-attribute 'default nil :font "Source Code Pro 16")
+
+;; Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset (font-spec :family "Noto Sans T Chinese" :size 16)))
+
+
 ; don't open new frames when opening files in aquamacs
 (setq one-buffer-one-frame-mode nil)
 
