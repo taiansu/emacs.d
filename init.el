@@ -5,8 +5,10 @@
 (require 'grep-a-lot)
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
+(require 'evil)
 
 (normal-erase-is-backspace-mode 1)
+(evil-mode 1)
 
 ; don't open new frames when opening files in aquamacs
 (setq one-buffer-one-frame-mode nil)
@@ -37,10 +39,10 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(blink-cursor-mode nil)
- '(custom-enabled-themes (quote (spacegray)))
+ '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("53e29ea3d0251198924328fd943d6ead860e9f47af8d22f0b764d11168455a8e" default)))
+    ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(fci-rule-color "#343d46")
  '(line-spacing 3)
  '(magit-diff-use-overlays nil)
@@ -214,8 +216,6 @@ of seeing_is_believing."
   (let ((beg (if (region-active-p) (region-beginning) (point-min)))
         (end (if (region-active-p) (region-end) (point-max))))
     (shell-command-on-region beg end "seeing_is_believing" nil 'replace)))
-
-(evilnc-default-hotkeys)
 
 ;; anzu
 (global-anzu-mode +1)

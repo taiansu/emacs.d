@@ -53,7 +53,13 @@
 (depends-on "w3m")
 (depends-on "web-mode")
 (depends-on "wrap-region")
-(depends-on "spacegray-theme")
+(depends-on "color-theme-solarized")
+;; evil-mode members
+(depends-on "evil")
+(depends-on "evil-args")
+(depends-on "evil-surround")
+(depends-on "evil-numbers")
+(depends-on "evil-terminal-cursor-changer")
 
 ;; syntax
 (depends-on "markdown-mode")
