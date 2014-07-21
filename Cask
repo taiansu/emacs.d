@@ -53,6 +53,7 @@
 (depends-on "w3m")
 (depends-on "web-mode")
 (depends-on "wrap-region")
+(depends-on "spacegray-theme")
 
 ;; syntax
 (depends-on "markdown-mode")

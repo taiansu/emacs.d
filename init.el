@@ -6,10 +6,7 @@
 (grep-a-lot-setup-keys)
 (require 'rainbow-delimiters)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/spacegray")
 (normal-erase-is-backspace-mode 1)
-
-(load-theme 'spacegray t)
 
 ; don't open new frames when opening files in aquamacs
 (setq one-buffer-one-frame-mode nil)
@@ -40,6 +37,10 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(blink-cursor-mode nil)
+ '(custom-enabled-themes (quote (spacegray)))
+ '(custom-safe-themes
+   (quote
+    ("53e29ea3d0251198924328fd943d6ead860e9f47af8d22f0b764d11168455a8e" default)))
  '(fci-rule-color "#343d46")
  '(line-spacing 3)
  '(magit-diff-use-overlays nil)
