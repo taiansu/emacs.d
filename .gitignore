@@ -2,6 +2,7 @@ backup
 autosaves
 /url/cookies
 /secrets.el
+/session.*
 /tramp
 /elpa
 /.cask
