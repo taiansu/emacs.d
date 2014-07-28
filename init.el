@@ -201,14 +201,6 @@
 (require 'highlight-indentation)
 (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
 
-; ====== viper =========
-
-;(setq viper-mode nil)                ; enable Viper at load time
-;(setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
-;(require 'viper)                   ; load Viper
-;(require 'vimpulse)                ; load Vimpulse
-;(require 'redo)			   ; enable vim-style redo
-;(require 'rect-mark)		   ; enable prettier rectangular selections
 (defadvice linum-update-window (around linum-dynamic activate)
   (let* ((w (length (number-to-string
                      (count-lines (point-min) (point-max)))))
