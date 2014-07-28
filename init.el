@@ -11,12 +11,12 @@
 (evil-mode 1)
 
 ;; Setting English Font
-(set-face-attribute 'default nil :font "Source Code Pro 16")
+; (set-face-attribute 'default nil :font "Source Code Pro-18")
 
 ;; Chinese Font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font)
-                        charset (font-spec :family "Noto Sans T Chinese" :size 16)))
+; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;       (set-fontset-font (frame-parameter nil 'font)
+;                         charset (font-spec :family "Noto Sans T Chinese" :size 18)))
 
 
 ; don't open new frames when opening files in aquamacs
@@ -88,7 +88,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight light :height 160 :width normal :foundry "nil" :family "Source Code Pro")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight light :height 180 :width normal :foundry "nil" :family "Source Code Pro")))))
 
 ;; ==============================
 
