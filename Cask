@@ -24,7 +24,6 @@
 (depends-on "rubocop")
 (depends-on "ruby-compilation")
 (depends-on "ruby-tools")
-(depends-on "color-theme-solarized")
 ;; evil-mode members
 (depends-on "evil")
 (depends-on "evil-args")
@@ -33,8 +32,10 @@
 (depends-on "evil-terminal-cursor-changer")
 (depends-on "evil-nerd-commenter")
 
+(depends-on "color-theme-solarized")
+(depends-on "zenburn-theme")
+
 ;; syntax
 (depends-on "markdown-mode")
 (depends-on "livescript-mode")
 (depends-on "clojure-mode")
-
