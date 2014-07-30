@@ -5,7 +5,8 @@
   "f"  'projectile-find-file
   "e" 'find-file
   "b" 'switch-to-buffer
-  "<space>" 'evil-buffer
+  "<SPC>" 'evil-buffer
+  "c" 'delete-trailing-whitespace
   "k" 'kill-buffer)
 
 ; evil-mode
@@ -49,3 +50,9 @@
 ;; evil-nerd-commenter
 (setq evilnc-hotkey-comment-operator "\\")
 (require 'evil-nerd-commenter)
+
+;; evil-plugins
+(require 'evil-numbers)
+(require 'evil-surround)
+(require 'evil-matchit)
+(require 'evil-args)
