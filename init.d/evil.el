@@ -8,6 +8,7 @@
   "<SPC>" 'evil-buffer
   "c" 'delete-trailing-whitespace
   "o" 'prev-window
+  "s" 'seeing_is_believing
   "k" 'kill-buffer)
 
 ; evil-mode

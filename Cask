@@ -40,7 +40,6 @@
 
 ;; Source control
 (depends-on "magit")
-(depends-on "magithub")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
 (depends-on "gist")
