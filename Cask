@@ -4,38 +4,60 @@
 (source org)
 
 (depends-on "ag")
+(depends-on "anzu")
 (depends-on "auto-complete")
 (depends-on "cask")
 (depends-on "dash")
+(depends-on "dired+")
 (depends-on "findr")
 (depends-on "floobits")
 (depends-on "flx-ido")
 (depends-on "highlight")
 (depends-on "highlight-indentation")
 (depends-on "hlinum")
-(depends-on "inf-ruby")
-(depends-on "magit")
-(depends-on "magithub")
 (depends-on "multi-term")
 (depends-on "multiple-cursors")
 (depends-on "rainbow-delimiters")
 (depends-on "rainbow-mode")
-(depends-on "recentf-ext")
-(depends-on "rubocop")
-(depends-on "ruby-compilation")
-(depends-on "ruby-tools")
-;; evil-mode members
+(depends-on "popup")
+(depends-on "web-mode")
+
+(depends-on "pkg-info")
+(depends-on "projectile")
+
+;; evil-mode & friends
 (depends-on "evil")
+(depends-on "evil-leader")
 (depends-on "evil-args")
+(depends-on "evil-matchit")
 (depends-on "evil-surround")
 (depends-on "evil-numbers")
 (depends-on "evil-terminal-cursor-changer")
-(depends-on "evil-nerd-commenter")
+;; (depends-on "evil-nerd-commenter") ;; use the costum one
 
 (depends-on "color-theme-solarized")
 (depends-on "zenburn-theme")
 
-;; syntax
+;; Source control
+(depends-on "magit")
+(depends-on "magithub")
+(depends-on "git-commit-mode")
+(depends-on "git-rebase-mode")
+(depends-on "gist")
+
+;; Yasnippet
+(depends-on "yasnippet")
+(depends-on "elixir-yasnippets")
+(depends-on "react-snippets")
+(depends-on "go-snippets")
+
+;; Languages
 (depends-on "markdown-mode")
 (depends-on "livescript-mode")
 (depends-on "clojure-mode")
+(depends-on "rubocop")
+(depends-on "ruby-compilation")
+(depends-on "ruby-tools")
+(depends-on "inf-ruby")
+(depends-on "elixir-mode")
+(depends-on "elixir-mix")

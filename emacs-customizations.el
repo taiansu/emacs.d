@@ -10,7 +10,7 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(background-color "#002b36")
  '(background-mode dark)
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backup/"))))
  '(blink-cursor-mode nil)
  '(cursor-color "#839496")
  '(custom-enabled-themes (quote (zenburn)))
