@@ -31,8 +31,9 @@
 (depends-on "evil-args")
 (depends-on "evil-matchit")
 (depends-on "evil-surround")
-(depends-on "evil-numbers")
 (depends-on "evil-terminal-cursor-changer")
+(depends-on "evil-numbers")
+
 ;; (depends-on "evil-nerd-commenter") ;; use the costum one
 
 (depends-on "color-theme-solarized")

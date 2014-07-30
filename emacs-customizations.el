@@ -12,8 +12,9 @@
  '(background-mode dark)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backup/"))))
  '(blink-cursor-mode nil)
+ '(confirm-kill-emacs (quote y-or-n-p))
  '(cursor-color "#839496")
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
     ("146d24de1bb61ddfa64062c29b5ff57065552a7c4019bee5d869e938782dfc2a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))

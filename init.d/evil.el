@@ -58,3 +58,5 @@
 (require 'evil-surround)
 (require 'evil-matchit)
 (require 'evil-args)
+(require 'evil-mode-line)
+(require 'evil-relative-linum) ;; not works, actually
