@@ -7,6 +7,7 @@
   "b" 'switch-to-buffer
   "<SPC>" 'evil-buffer
   "c" 'delete-trailing-whitespace
+  "o" 'prev-window
   "k" 'kill-buffer)
 
 ; evil-mode
