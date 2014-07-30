@@ -1,8 +1,17 @@
+; evil-leader
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+  "f"  'projectile-find-file
+  "e" 'find-file
+  "b" 'switch-to-buffer
+  "<space>" 'evil-buffer
+  "k" 'kill-buffer)
+
+; evil-mode
 (require 'evil)
 (evil-mode 1)
 
-(define-key evil-normal-state-map (kbd ",f") 'projectile-find-file)
-(define-key evil-normal-state-map (kbd ",,") 'evil-buffer)
 ; (define-key evil-normal-state-map (kbd "q") nil)
 
 (define-key evil-insert-state-map (kbd "C-e") nil)
