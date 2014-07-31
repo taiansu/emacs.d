@@ -4,12 +4,14 @@
 (evil-leader/set-key
   "f"  'projectile-find-file
   "e" 'find-file
-  "b" 'switch-to-buffer
   "<SPC>" 'evil-buffer
   "c" 'delete-trailing-whitespace
   "o" 'prev-window
-  "s" 'seeing_is_believing
+  "s" 'ido-switch-buffer
+  "x" 'seeing-is-believing
   "k" 'kill-buffer)
+
+;;  "b" ' ;; it's searching ctags in current buffer
 
 ; evil-mode
 (require 'evil)

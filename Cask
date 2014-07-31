@@ -1,6 +1,4 @@
-(source gnu)
 (source melpa)
-(source marmalade)
 (source org)
 
 (depends-on "ag")
@@ -15,6 +13,7 @@
 (depends-on "highlight")
 (depends-on "highlight-indentation")
 (depends-on "hlinum")
+(depends-on "linum-relative")
 (depends-on "multi-term")
 (depends-on "multiple-cursors")
 (depends-on "rainbow-delimiters")
@@ -33,11 +32,10 @@
 (depends-on "evil-surround")
 (depends-on "evil-terminal-cursor-changer")
 (depends-on "evil-numbers")
-
 ;; (depends-on "evil-nerd-commenter") ;; use the costum one
 
-(depends-on "color-theme-solarized")
 (depends-on "zenburn-theme")
+(depends-on "spacegray-theme")
 
 ;; Source control
 (depends-on "magit")

@@ -165,6 +165,10 @@
 (add-hook 'dired-mode-hook 'dired-sort-auto-apply)
 (define-key dired-mode-map "s" 'dired-sort-and-remember)
 
+;; allow dired to be able to delete or copy a whole dir.
+(setq dired-recursive-copies (quote always)) ; “always” means no asking
+(setq dired-recursive-deletes (quote top)) ; “top” means ask once
+
 ;; 看動畫很方便 ˊ・ω・ˋ 按 M-a 把檔案加入 SMPlayer 的播放清單中。
 ;(defun dired-add-to-smplayer-playlist ()
 ;  "Add a multimedia file or all multimedia files under a directory into SMPlayer's playlist via Dired."
@@ -187,3 +191,4 @@
 ;        (message "This is not a supported audio or video file."))))
 ;  (dired-next-line 1))
 ;(define-key dired-mode-map (kbd "M-a") 'dired-add-to-smplayer-playlist)
+
