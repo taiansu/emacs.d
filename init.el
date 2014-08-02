@@ -8,12 +8,12 @@
 (setq ts-elisp-dir (expand-file-name "elisp" ts-emacs-config-dir))
 (setq ts-elisp-external-dir
       (expand-file-name "external" ts-elisp-dir))
-(setq ts-init-dir
-      (expand-file-name "init.d" ts-emacs-config-dir))
+(setq ts-config-dir
+      (expand-file-name "config.d" ts-emacs-config-dir))
 
-;; Load all elisp files in ./init.d
-(if (file-exists-p ts-init-dir)
-    (dolist (file (directory-files ts-init-dir t "\\.el$"))
+;; Load all elisp files in ./config.d
+(if (file-exists-p ts-config-dir)
+    (dolist (file (directory-files ts-config-dir t "\\.el$"))
       (load file)))
 
 ;; Set up 'custom' system
