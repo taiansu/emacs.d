@@ -10,8 +10,6 @@
 (depends-on "dash")
 (depends-on "dired+")
 (depends-on "findr")
-(depends-on "floobits")
-(depends-on "flx-ido")
 (depends-on "highlight")
 (depends-on "highlight-indentation")
 (depends-on "hlinum")
@@ -25,6 +23,20 @@
 (depends-on "pkg-info")
 (depends-on "projectile")
 (depends-on "ace-jump-mode")
+
+;; helm & firends
+(depends-on "helm")
+(depends-on "helm-mode-manager")
+(depends-on "helm-rails")
+(depends-on "helm-rb")
+(depends-on "helm-ls-git")
+(depends-on "helm-dash")
+(depends-on "helm-cmd-t")
+(depends-on "helm-emmet")
+(depends-on "helm-gist")
+(depends-on "helm-ag")
+(depends-on "helm-c-yasnippet")
+
 
 ;; evil-mode & friends
 ;(depends-on "evil")
