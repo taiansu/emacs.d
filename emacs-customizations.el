@@ -1,7 +1,3 @@
-(setq ring-bell-function
-      (lambda () (message "%s" (propertize "⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠"
-                                           'face '(:foreground "white" :background "red")))))
-
 (when (eq system-type 'darwin)
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
@@ -17,8 +13,12 @@
  '(blink-cursor-alist (quote ((nil))))
  '(blink-cursor-mode nil)
  '(confirm-kill-emacs (quote y-or-n-p))
+ '(create-lockfiles nil)
  '(cursor-type (quote hbar))
  '(custom-enabled-themes (quote (leuven)))
+ '(fill-column 80)
+ '(ido-enable-flex-matching t)
+ '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(normal-erase-is-backspace t)
@@ -28,8 +28,10 @@
      ("melpa" . "http://melpa.org/packages/"))))
  '(rainbow-identifiers-cie-l*a*b*-lightness 80)
  '(rainbow-identifiers-cie-l*a*b*-saturation 18)
+ '(server-mode t)
  '(show-trailing-whitespace t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
