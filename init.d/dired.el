@@ -2,10 +2,30 @@
 (require 'dired-x)
 (require 'dired+)
 
-;; 讓 Dired 有「多欄式」效果：用 C-x 3 在螢幕上開兩個 dired 視窗（如
-;; 附圖），再來只要按 R 或 C（移動/複製檔案）時，會自動以另一個視窗為
+;; 讓 Dired 有「多欄式」效果：用 C-x 3 在螢幕上開兩個 dired 視窗，
+;; 再來只要按 R 或 C（移動/複製檔案）時，會自動以另一個視窗為
 ;; 預設目標路徑。
 (setq dired-dwim-target t)
+
+;; 用 C-o 在多欄中切換
+(define-key dired-mode-map (kbd "C-o") 'other-window)
+
+;; 按 Enter 及滑鼠時 Dired 時不會一直開新的 Dired buffer
+(define-key dired-mode-map (kbd "RET") 'diredp-find-file-reuse-dir-buffer)
+(define-key dired-mode-map [mouse-2] 'diredp-mouse-find-file-reuse-dir-buffer)
+
+;; 按 q 回到上層目錄，並自動把 cursor 移動到前一個目錄處
+(defun my-dired-backward ()
+  "Go back to the parent directory (..), and the cursor will be moved to where
+          the previous directory."
+  (interactive)
+  (let* ((DIR (buffer-name)))
+    (if (equal DIR "*Find*")
+        (quit-window t)
+      (progn (find-alternate-file "..")
+             (re-search-forward DIR nil :no-error)
+             (revert-buffer)))))
+(define-key dired-mode-map (kbd "q") 'my-dired-backward)
 
 ;; 目錄排在檔案之前。
 (defun dired-directory-sort ()
@@ -21,28 +41,8 @@
 
 (add-hook 'dired-after-readin-hook 'dired-directory-sort)
 
-;; 按 q 回到上層目錄，並自動把 cursor 移動到前一個目錄處
-(defun my-dired-backward ()
-  "Go back to the parent directory (..), and the cursor will be moved to where
-          the previous directory."
-  (interactive)
-  (let* ((DIR (buffer-name)))
-    (if (equal DIR "*Find*")
-        (quit-window t)
-      (progn (find-alternate-file "..")
-             (re-search-forward DIR nil :no-error)
-             (revert-buffer)))))
-(define-key dired-mode-map (kbd "q") 'my-dired-backward)
-
-
-;; 按 Enter 時 Dired 時不會一直開新的 Dired buffer（按 Enter 時只用同一個 Dired 開目錄）
-(defun dired-my-find-alternate-file ()
-  (interactive)
-  (if (file-regular-p (dired-get-filename))
-      (dired-find-file)
-    (dired-find-alternate-file)))
-(define-key dired-mode-map (kbd "RET") 'dired-my-find-alternate-file) ; 按 Enter 開檔案
-(put 'dired-find-alternate-file 'disabled nil) ; 避免 Dired 問你一些囉唆的問題
+;; 避免 Dired 問你一些囉唆的問題
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;;自動隱藏以.開頭的檔案（使用 C-x M-o 顯示/隱藏）
 (setq dired-omit-files "^\\...+$")
@@ -114,10 +114,10 @@
 (setq find-ls-option '("-print0 | xargs -0 ls -ald" . ""))
 
 ;; 手動開系統的外接硬碟掛載目錄很麻煩，乾脆弄個快速鍵，C-c m 直接開
-;; /var/rum/media（如果你的系統掛載路徑不在這，請自行修改）
+;; /Volumes/（如果你的系統掛載路徑不在這，請自行修改）
 (defun dired-open-mounted-media-dir ()
   (interactive)
-  (find-file "/Volumes/StormLightArchive/"))
+  (find-file "/Volumes/"))
 (define-key dired-mode-map (kbd "C-c m") 'dired-open-mounted-media-dir)
 
 ;; 按 s 排序檔案，會先問你要根據什麼屬性排序，而且紀錄下排序狀態，不會
@@ -166,28 +166,5 @@
 (define-key dired-mode-map "s" 'dired-sort-and-remember)
 
 ;; allow dired to be able to delete or copy a whole dir.
-(setq dired-recursive-copies (quote always)) ; “always” means no asking
-(setq dired-recursive-deletes (quote top)) ; “top” means ask once
-
-;; 看動畫很方便 ˊ・ω・ˋ 按 M-a 把檔案加入 SMPlayer 的播放清單中。
-;(defun dired-add-to-smplayer-playlist ()
-;  "Add a multimedia file or all multimedia files under a directory into SMPlayer's playlist via Dired."
-;  (interactive)
-;  (require 'cl)
-;  (let* ((PATTERN "\\(\\.mp4\\|\\.flv\\|\\.rmvb\\|\\.mkv\\|\\.avi\\|\\.rm\\|\\.mp3\\|\\.wav\\|\\.wma\\|\\.m4a\\|\\.mpeg\\|\\.aac\\|\\.ogg\\|\\.flac\\|\\.ape\\|\\.mp2\\|\\.wmv\\|.m3u\\|.webm\\)$")
-;         (FILE (dired-get-filename nil t)))
-;    (if (file-directory-p FILE) ;if it's a dir.
-;        (let* ((FILE_LIST (directory-files FILE t PATTERN))
-;               (n 0)
-;               s_FILE_LIST)
-;          (dolist (x FILE_LIST)
-;            (if (not (or (equal x ".") (equal x "..")))
-;                (setq s_FILE_LIST (concat s_FILE_LIST "'" x "' ")))
-;            (setq n (1+ n)))
-;          (message "Opening %s files..." n)
-;          (call-process-shell-command "smplayer -add-to-playlist" nil nil nil (format "%s &" s_FILE_LIST)))
-;      (if (string-match PATTERN FILE)   ;if it's a file
-;          (call-process "smplayer" nil 0 nil "-add-to-playlist" FILE)
-;        (message "This is not a supported audio or video file."))))
-;  (dired-next-line 1))
-;(define-key dired-mode-map (kbd "M-a") 'dired-add-to-smplayer-playlist)
+(setq dired-recursive-copies (quote always)) ; "always" means no asking
+(setq dired-recursive-deletes (quote top)) ; "top" means ask once
