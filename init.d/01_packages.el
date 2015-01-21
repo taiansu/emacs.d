@@ -42,7 +42,7 @@
 
         ;; Org-mode
         org
-        
+
         ;; Yasnippet
         yasnippet
         elixir-yasnippets
