@@ -21,3 +21,16 @@
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; smart-scan
+(global-smartscan-mode t)
+
+;; disable electric function for hooks
+(defun disable-electric-indent ()
+  (electric-indent-mode -1))
+
+(add-hook 'prog-mode-hook
+          (lambda()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 2)
+            (setq tab-stop-list (number-sequence 2 200 2))))

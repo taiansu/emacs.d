@@ -1,3 +1,4 @@
+(setq package-enable-at-startup nil) (package-initialize)
 ; taiansu's Emacs 24 Configuration
 
 ;; Directories and file names
@@ -16,13 +17,12 @@
 ;; This line MUST come before Org is loaded
 (setq org-replace-disputed-keys t)
 
-;; Set up 'custom' system
-(setq custom-file (expand-file-name "emacs-customizations.el" ts-emacs-config-dir))
-(load custom-file)
-
 ;; Load all elisp files in ./init.d
 (if (file-exists-p ts-init-dir)
     (dolist (file (directory-files ts-init-dir t "\\.el$"))
       (load file)))
 
+;; Set up 'custom' system
+(setq custom-file (expand-file-name "emacs-customizations.el" ts-emacs-config-dir))
+(load custom-file)
 ;; =============================================================================

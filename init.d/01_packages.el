@@ -12,10 +12,11 @@
         anzu
         auto-complete
         coffee-mode
-        darcula-theme
         dash
         dired+
+        enh-ruby-mode
         findr
+        flycheck
         hexrgb
         highlight
         highlight-indentation
@@ -23,13 +24,13 @@
         ; inflections
         ; jump
         ; fill-column-indicator
-        ; haml-mode
         ; htmlize
         ; inflections
-                rainbow-delimiters
-        rainbow-mode
         ; minimap
         multi-term
+        rainbow-delimiters
+        rainbow-mode
+        smartscan
         undo-tree
         whitespace-cleanup-mode
 
@@ -47,12 +48,17 @@
         yasnippet
         elixir-yasnippets
 
+        ;; Themes
+        base16-theme
+
         ;; Languages
         feature-mode
         inf-ruby
+        js2-mode
         scss-mode
+        tern
+        tern-auto-complete
         ;rhtml-mode
-
         ))
 
 (unless package-archive-contents

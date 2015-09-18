@@ -21,11 +21,6 @@
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 (global-set-key "\C-j" 'prev-buffer)
 
-;; exchange command and meta in emacs
-;; but switch input method still using command-space
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
-
 ;; Expansion
 (global-set-key (kbd "M-/") 'hippie-expand)
 
