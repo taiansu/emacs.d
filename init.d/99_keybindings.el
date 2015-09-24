@@ -1,8 +1,8 @@
 ; Keyboard Bindings
 
-; GRB: esc{number} or esc-g{number} goto-line
-
+; GRB: esc{number} or esc-g{number} (M-g {number}) goto-line
 (global-set-key (quote [?\e ?g]) (quote goto-line))
+
 ; GRB: esc-( to start-kbd-marco and esc-) to end-kbd-marco
 (global-set-key '[?\e ?(] 'start-kbd-macro)
 (global-set-key '[?\e ?)] 'end-kbd-macro) ;GRB: esc-n to call-last-kbd-marco
@@ -38,6 +38,12 @@
 
 ;; Replace
 (global-set-key (kbd "C-M-f") 'query-replace)
+
+; Quick shrink window
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 (defun xah-copy-line-or-region ()
   "Copy current line, or text selection.
