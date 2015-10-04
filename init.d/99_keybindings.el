@@ -28,13 +28,13 @@
 (setq mouse-drag-copy-region t)
 
 ;; zap-upto-char
-(global-set-key "\C-z" 'zap-up-to-char)
-(global-set-key "\C-Z" 'zap-to-char)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-z") 'zap-to-char)
 
 ;; Undo tree
 (defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "M-z") 'undo)
-(global-set-key (kbd "M-s-z") 'redo)
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-S-z") 'redo)
 
 ;; Replace
 (global-set-key (kbd "C-M-f") 'query-replace)

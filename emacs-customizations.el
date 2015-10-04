@@ -19,6 +19,7 @@
  '(custom-safe-themes
    (quote
     ("75c0b1d2528f1bce72f53344939da57e290aa34bea79f3a1ee19d6808cb55149" default)))
+ '(evil-shift-width 2)
  '(fill-column 100)
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))

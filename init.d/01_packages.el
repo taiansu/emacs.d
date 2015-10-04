@@ -7,7 +7,6 @@
 
 (setq package-list
       '(
-        ace-jump-mode
         ag
         anzu
         auto-complete
@@ -15,35 +14,33 @@
         dash
         dired+
         enh-ruby-mode
+        evil
+        exec-path-from-shell
         findr
         flycheck
+        fuzzy
         hexrgb
         highlight
         highlight-indentation
         hlinum
-        ; inflections
-        ; jump
-        ; fill-column-indicator
+        ido-vertical-mode
+        js2-mode
+        json-mode
         ; htmlize
         ; inflections
-        ; minimap
         multi-term
         rainbow-delimiters
         rainbow-mode
         smartscan
         undo-tree
         whitespace-cleanup-mode
-
-        ;; Source control
         gh
         gist
         magit
         ; magit-gh-pulls
         ; magithub
 
-        ;; Org-mode
         org
-
         ;; Yasnippet
         yasnippet
         elixir-yasnippets
@@ -54,11 +51,10 @@
         ;; Languages
         feature-mode
         inf-ruby
-        js2-mode
         scss-mode
         tern
         tern-auto-complete
-        ;rhtml-mode
+        web-mode
         ))
 
 (unless package-archive-contents

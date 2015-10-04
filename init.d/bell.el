@@ -7,5 +7,5 @@
 (setq ring-bell-function 'important-bell-only)
 
 (setq ring-bell-function
-      (lambda () (message "%s" (propertize "⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠"
-                                           'face '(:foreground "white" :background "red")))))
+      (lambda () (message "%s" (propertize "⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠"
+                                           'face '(:foreground "red" :background "black")))))
