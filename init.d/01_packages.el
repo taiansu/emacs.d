@@ -1,10 +1,6 @@
 (require 'package)
 (package-initialize)
 
-(defun ts-require-package (name)
-  (unless (package-installed-p name)
-    (package-install name)))
-
 (setq package-list
       '(
         ag
@@ -13,8 +9,18 @@
         coffee-mode
         dash
         dired+
+        emmet-mode
         enh-ruby-mode
         evil
+        evil-anzu
+        evil-args
+        evil-commentary
+        evil-leader
+        evil-numbers
+        evil-org
+        evil-search-highlight-persist
+        evil-smartparens
+        evil-surround
         exec-path-from-shell
         findr
         flycheck
@@ -24,10 +30,9 @@
         highlight-indentation
         hlinum
         ido-vertical-mode
+        inf-ruby
         js2-mode
         json-mode
-        ; htmlize
-        ; inflections
         multi-term
         rainbow-delimiters
         rainbow-mode
@@ -37,17 +42,11 @@
         gh
         gist
         magit
-        ; magit-gh-pulls
-        ; magithub
-
         org
-        ;; Yasnippet
         yasnippet
         elixir-yasnippets
-
         ;; Themes
         base16-theme
-
         ;; Languages
         feature-mode
         inf-ruby
@@ -57,6 +56,7 @@
         web-mode
         ))
 
+; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 

@@ -2,7 +2,7 @@
 (evil-mode 1)
 
 (setq evil-emacs-state-cursor '("#1e91b1" box))
-(setq evil-normal-state-cursor '("#96a760" box))
+(setq evil-normal-state-cursor '("#aeb4bd" box))
 (setq evil-visual-state-cursor '("#da8414" box))
 (setq evil-insert-state-cursor '("#96a760" bar))
 (setq evil-replace-state-cursor '("#e02519" bar))
@@ -17,3 +17,7 @@
 (add-hook 'js2-mode-hook
   (function (lambda ()
           (setq evil-shift-width 2))))
+
+;; evil-leader
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")

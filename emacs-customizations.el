@@ -26,6 +26,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
+ '(js2-basic-offset 2)
  '(magit-diff-use-overlays nil)
  '(mail-indentation-spaces 4)
  '(normal-erase-is-backspace t)
